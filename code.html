@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>METRION — Presença Digital de Alto Padrão &amp; Resultados Reais</title>
+<!-- Google Fonts: Inter & Roboto -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#000000',
+              surface: '#070707',
+              card: '#0D0D0D',
+              cardHover: '#131313',
+              white: '#F4F4F4',
+              muted: '#9E9E9E',
+              border: 'rgba(244, 244, 244, 0.08)',
+              borderHover: 'rgba(0, 242, 254, 0.35)',
+              cyan: '#00F2FE',
+              cyanDim: 'rgba(0, 242, 254, 0.08)',
+              cyanBorder: 'rgba(0, 242, 254, 0.28)'
+            }
+          },
+          fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+            heading: ['Inter', 'sans-serif']
+          },
+          borderRadius: {
+            'custom': '10px'
+          },
+          boxShadow: {
+            'cyan-glow': '0 0 35px -5px rgba(0, 242, 254, 0.35)',
+            'cyan-sm': '0 0 16px 0 rgba(0, 242, 254, 0.22)',
+            'cyan-subtle': '0 0 8px 0 rgba(0, 242, 254, 0.15)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles for Typography & UI Nuances -->
+<style data-purpose="typography">
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      font-family: 'Inter', 'Roboto', sans-serif;
+      background-color: #000000;
+      color: #F4F4F4;
+    }
+  </style>
+<style data-purpose="decorative-elements">
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #000000;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1C1C1C;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00F2FE;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: 200%;
+      animation: marquee 24s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    .hero-glow-radial {
+      background: radial-gradient(circle at 50% 30%, rgba(0, 242, 254, 0.15) 0%, rgba(0, 242, 254, 0.03) 45%, transparent 70%);
+    }
+  </style>
+
+  <!-- Lenis Smooth Scroll CDN -->
+  
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+</head>
+<body class="bg-black text-brand-white selection:bg-brand-cyan selection:text-black antialiased overflow-x-hidden">
+<!-- BEGIN: 01. Top Bar & Header Navigation -->
+<header class="sticky top-0 z-50 bg-black/90 backdrop-blur-xl border-b border-brand-border" data-purpose="site-navigation">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<!-- Logo METRION -->
+<a aria-label="METRION Início" class="flex items-center gap-2 group" href="#">
+<span class="font-heading font-black text-2xl tracking-wider text-brand-white group-hover:text-white transition-colors">
+          METRION<span class="inline-block w-2.5 h-2.5 rounded-full bg-brand-cyan ml-1 shadow-[0_0_10px_#00F2FE]"></span>
+</span>
+</a>
+<!-- Desktop Navigation Menu com itens refinados -->
+<nav aria-label="Primary Navigation" class="hidden md:flex items-center space-x-7 text-xs uppercase tracking-widest font-heading font-medium">
+<a class="text-brand-muted hover:text-brand-cyan transition-colors duration-200" href="#proposta">Proposta</a>
+<a class="text-brand-muted hover:text-brand-cyan transition-colors duration-200" href="#beneficios">Benefícios</a>
+<a class="text-brand-muted hover:text-brand-cyan transition-colors duration-200" href="#processo">Processo</a>
+<a class="text-brand-muted hover:text-brand-cyan transition-colors duration-200" href="#cases">Cases</a>
+<a class="text-brand-muted hover:text-brand-cyan transition-colors duration-200" href="#resultados">Resultados</a>
+<a class="text-brand-muted hover:text-brand-cyan transition-colors duration-200" href="#depoimentos">Depoimentos</a>
+<a class="text-brand-muted hover:text-brand-cyan transition-colors duration-200" href="#faq">FAQ</a>
+</nav>
+<!-- CTA Button in Header -->
+<div class="flex items-center gap-4">
+<a class="inline-flex items-center justify-center px-5 py-2.5 rounded-[8px] bg-brand-cyan text-black font-heading font-bold text-xs uppercase tracking-wider hover:brightness-110 transition-all duration-200 shadow-cyan-sm hover:shadow-cyan-glow" href="#contato">
+          Iniciar Projeto
+        </a>
+</div>
+</div>
+</header>
+<!-- END: 01. Top Bar & Header Navigation -->
+<main>
+<!-- BEGIN: 02. Hero Cinematográfico -->
+<section class="relative pt-24 pb-20 md:pt-36 md:pb-32 overflow-hidden border-b border-brand-border hero-glow-radial" data-purpose="hero-banner">
+<!-- Glow Decorativo de Fundo -->
+<div aria-hidden="true" class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-cyan/10 rounded-full blur-[140px] pointer-events-none"></div>
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+<!-- Floating Interactive Badges -->
+<div class="flex flex-wrap justify-center items-center gap-3 mb-8">
+<span class="px-3.5 py-1.5 rounded-[8px] border border-brand-cyanBorder bg-brand-cyanDim text-brand-cyan text-xs font-semibold tracking-wider uppercase">
+            Estúdio de Criação Digital
+          </span>
+<span class="w-1.5 h-1.5 rounded-full bg-brand-border hidden sm:inline-block"></span>
+<span class="px-3.5 py-1.5 rounded-[8px] border border-brand-border bg-brand-card text-brand-muted text-xs font-medium tracking-wider uppercase">
+            Alta Conversão &amp; Autoridade
+          </span>
+</div>
+<!-- Main Headline de Alto Impacto -->
+<h1 class="text-4xl sm:text-6xl lg:text-7xl font-heading font-extrabold tracking-tight leading-[1.08] mb-7">
+          Sua Presença Digital Construída Para <br class="hidden sm:inline"/>
+<span class="text-brand-cyan drop-shadow-[0_0_24px_rgba(0,242,254,0.4)]">Gerar Resultados Reais.</span>
+</h1>
+<!-- Subtitle Confiante e Direto -->
+<p class="max-w-2xl mx-auto text-base sm:text-lg text-brand-muted leading-relaxed mb-10 font-normal">
+          Desenvolvemos websites de alto padrão para empresas que exigem autoridade incontestável, velocidade extrema e conversão ativa de visitantes qualificados em novos clientes.
+        </p>
+<!-- CTAs Primário e Secundário -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+<a class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-[8px] bg-brand-cyan text-black font-heading font-bold text-sm tracking-wide hover:brightness-110 transition shadow-cyan-sm hover:shadow-cyan-glow" href="#contato">
+            Solicitar Proposta Imediata
+          </a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-[8px] bg-brand-card border border-brand-border hover:border-brand-cyan/40 text-brand-white hover:text-brand-cyan font-heading font-medium text-sm transition" href="#cases">
+            Ver Cases de Sucesso <span>→</span>
+</a>
+</div>
+<!-- Métricas em Destaque Sutil -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 border-t border-brand-border/60">
+<div class="p-3 text-center">
+<div class="text-2xl sm:text-3xl font-heading font-extrabold text-brand-white">+340%</div>
+<div class="text-xs text-brand-muted mt-1 uppercase tracking-wider">Tráfego Orgânico</div>
+</div>
+<div class="p-3 text-center">
+<div class="text-2xl sm:text-3xl font-heading font-extrabold text-brand-cyan">99.8%</div>
+<div class="text-xs text-brand-muted mt-1 uppercase tracking-wider">Satisfação &amp; Retenção</div>
+</div>
+<div class="p-3 text-center">
+<div class="text-2xl sm:text-3xl font-heading font-extrabold text-brand-white">&lt;0.8s</div>
+<div class="text-xs text-brand-muted mt-1 uppercase tracking-wider">Velocidade de Carregamento</div>
+</div>
+<div class="p-3 text-center">
+<div class="text-2xl sm:text-3xl font-heading font-extrabold text-brand-cyan">100%</div>
+<div class="text-xs text-brand-muted mt-1 uppercase tracking-wider">Propriedade do Código</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: 02. Hero Cinematográfico -->
+<!-- BEGIN: 03. Proposta Direta (Manifesto de Transformação) -->
+<section class="py-24 border-b border-brand-border bg-brand-surface" data-purpose="value-manifesto" id="proposta">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<span class="inline-block px-3 py-1 rounded-[8px] bg-brand-cyanDim border border-brand-cyanBorder text-brand-cyan text-xs font-semibold uppercase tracking-widest mb-6">
+          Nossa Proposta de Valor
+        </span>
+<blockquote class="text-2xl sm:text-4xl lg:text-5xl font-heading font-bold text-brand-white leading-tight tracking-tight mb-8">
+          “Não entregamos apenas código e design. Entregamos a <span class="text-brand-cyan">transformação real</span> do seu negócio no digital: mais clientes, autoridade imediata e retorno consistente sobre o investimento.”
+        </blockquote>
+<p class="max-w-2xl mx-auto text-brand-muted text-sm sm:text-base leading-relaxed">
+          Sem clones pré-fabricados, templates genéricos ou caixas vazias. Cada projeto na METRION passa por uma estratégia dedicada de UX/UI sênior, direção de arte exclusiva e engenharia de alto desempenho.
+        </p>
+</div>
+</section>
+<!-- END: 03. Proposta Direta -->
+<!-- BEGIN: 04. Benefícios - Comparativo Antes vs Depois -->
+<section class="py-24 border-b border-brand-border bg-black" data-purpose="transformation-comparison" id="beneficios">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<span class="inline-block px-3 py-1 rounded-[8px] bg-brand-cyanDim border border-brand-cyanBorder text-brand-cyan text-xs font-medium uppercase tracking-wider mb-3">
+            Transformação Tangível
+          </span>
+<h2 class="text-3xl sm:text-4xl font-heading font-bold text-brand-white">
+            O Impacto Direto de Uma Presença de Elite
+          </h2>
+<p class="text-brand-muted text-sm mt-3">Veja a disparidade entre o modelo ultrapassado e o padrão que a METRION constrói para sua marca.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card Comparativo 1 -->
+<div class="rounded-[10px] bg-brand-card border border-brand-border p-6 flex flex-col justify-between hover:border-brand-borderHover transition group">
+<div class="space-y-5">
+<div class="pb-4 border-b border-brand-border">
+<span class="text-[11px] font-mono uppercase text-red-400 tracking-wider">O Padrão Comum (Antes)</span>
+<h3 class="text-base font-heading font-medium text-brand-muted mt-1.5 leading-snug">
+                  Site lento, invisível e sem capacidade de conversão real.
+                </h3>
+</div>
+<div class="pt-2">
+<span class="text-[11px] font-mono uppercase text-brand-cyan tracking-wider">Com a METRION (Depois)</span>
+<h4 class="text-lg font-heading font-bold text-brand-white mt-1 leading-snug group-hover:text-brand-cyan transition-colors">
+                  Máquina de autoridade com SEO técnico otimizado e conversão ativa de leads.
+                </h4>
+<p class="text-xs text-brand-muted mt-2 leading-relaxed">
+                  Arquitetura pensada para engajar o visitante nos primeiros 3 segundos e conduzi-lo organicamente até a compra ou contato.
+                </p>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-brand-border flex items-center justify-between text-xs text-brand-cyan font-mono">
+<span>Performance 99+</span>
+<span>Lighthouse Verified</span>
+</div>
+</div>
+<!-- Card Comparativo 2 -->
+<div class="rounded-[10px] bg-brand-card border border-brand-border p-6 flex flex-col justify-between hover:border-brand-borderHover transition group">
+<div class="space-y-5">
+<div class="pb-4 border-b border-brand-border">
+<span class="text-[11px] font-mono uppercase text-red-400 tracking-wider">O Padrão Comum (Antes)</span>
+<h3 class="text-base font-heading font-medium text-brand-muted mt-1.5 leading-snug">
+                  Presença genérica que transmite amadorismo e desconfiança.
+                </h3>
+</div>
+<div class="pt-2">
+<span class="text-[11px] font-mono uppercase text-brand-cyan tracking-wider">Com a METRION (Depois)</span>
+<h4 class="text-lg font-heading font-bold text-brand-white mt-1 leading-snug group-hover:text-brand-cyan transition-colors">
+                  Percepção instantânea de marca premium com alto valor percebido.
+                </h4>
+<p class="text-xs text-brand-muted mt-2 leading-relaxed">
+                  Design cinematográfico e coeso que posiciona sua empresa no topo da sua categoria de mercado imediatamente.
+                </p>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-brand-border flex items-center justify-between text-xs text-brand-cyan font-mono">
+<span>Autoridade</span>
+<span>Valor Percebido Imediato</span>
+</div>
+</div>
+<!-- Card Comparativo 3 -->
+<div class="rounded-[10px] bg-brand-card border border-brand-border p-6 flex flex-col justify-between hover:border-brand-borderHover transition group">
+<div class="space-y-5">
+<div class="pb-4 border-b border-brand-border">
+<span class="text-[11px] font-mono uppercase text-red-400 tracking-wider">O Padrão Comum (Antes)</span>
+<h3 class="text-base font-heading font-medium text-brand-muted mt-1.5 leading-snug">
+                  Dependência total de tráfego pago custoso para atrair qualquer cliente.
+                </h3>
+</div>
+<div class="pt-2">
+<span class="text-[11px] font-mono uppercase text-brand-cyan tracking-wider">Com a METRION (Depois)</span>
+<h4 class="text-lg font-heading font-bold text-brand-white mt-1 leading-snug group-hover:text-brand-cyan transition-colors">
+                  Tráfego orgânico consistente e fluxo contínuo de novas oportunidades.
+                </h4>
+<p class="text-xs text-brand-muted mt-2 leading-relaxed">
+                  Estrutura de conteúdo indexável, metadados semânticos e jornada estratégica que reduzem drasticamente o CAC.
+                </p>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-brand-border flex items-center justify-between text-xs text-brand-cyan font-mono">
+<span>Sustentabilidade</span>
+<span>Redução de CAC</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: 04. Benefícios - Comparativo Antes vs Depois -->
+<!-- BEGIN: 05. O Processo em 3 Passos Claros e Transparentes -->
+<section class="py-24 border-b border-brand-border bg-brand-surface" data-purpose="process-timeline" id="processo">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="inline-block px-3 py-1 rounded-[8px] bg-brand-cyanDim border border-brand-cyanBorder text-brand-cyan text-xs font-medium uppercase tracking-wider mb-3">
+            Metodologia Sem Fricção
+          </span>
+<h2 class="text-3xl sm:text-4xl font-heading font-bold text-brand-white">
+            O Processo em 3 Etapas Transparentes
+          </h2>
+<p class="text-brand-muted text-sm mt-3">Do diagnóstico inicial ao lançamento com monitoramento contínuo.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+<!-- Passo 01 -->
+<div class="p-8 rounded-[10px] bg-brand-card border border-brand-border hover:border-brand-cyanBorder transition relative group">
+<div class="w-12 h-12 rounded-[8px] bg-black border border-brand-cyanBorder flex items-center justify-center text-brand-cyan font-heading font-black text-lg mb-6 shadow-cyan-subtle">
+              01
+            </div>
+<h3 class="font-heading font-bold text-xl text-brand-white mb-3 group-hover:text-brand-cyan transition-colors">
+              Diagnóstico &amp; Arquitetura
+            </h3>
+<p class="text-brand-muted text-xs sm:text-sm leading-relaxed mb-4">
+              Mapeamento aprofundado do seu modelo comercial, concorrentes diretos e definição da Proposta Única de Valor para guiar toda a estrutura.
+            </p>
+<ul class="text-xs text-brand-muted space-y-2 border-t border-brand-border/60 pt-4">
+<li class="flex items-center gap-2"><span class="text-brand-cyan">✓</span> Análise de Persona e Tom de Voz</li>
+<li class="flex items-center gap-2"><span class="text-brand-cyan">✓</span> Wireframes Estratégicos de Conversão</li>
+</ul>
+</div>
+<!-- Passo 02 -->
+<div class="p-8 rounded-[10px] bg-brand-card border border-brand-border hover:border-brand-cyanBorder transition relative group">
+<div class="w-12 h-12 rounded-[8px] bg-black border border-brand-cyanBorder flex items-center justify-center text-brand-cyan font-heading font-black text-lg mb-6 shadow-cyan-subtle">
+              02
+            </div>
+<h3 class="font-heading font-bold text-xl text-brand-white mb-3 group-hover:text-brand-cyan transition-colors">
+              Design &amp; Engenharia Web
+            </h3>
+<p class="text-brand-muted text-xs sm:text-sm leading-relaxed mb-4">
+              Design visual exclusivo criado do zero no padrão dark cinematográfico, codificado com as tecnologias mais rápidas do ecossistema moderno.
+            </p>
+<ul class="text-xs text-brand-muted space-y-2 border-t border-brand-border/60 pt-4">
+<li class="flex items-center gap-2"><span class="text-brand-cyan">✓</span> Layout 100% Autoral (Zero Templates)</li>
+<li class="flex items-center gap-2"><span class="text-brand-cyan">✓</span> Código Limpo, Semântico e Leve</li>
+</ul>
+</div>
+<!-- Passo 03 -->
+<div class="p-8 rounded-[10px] bg-brand-card border border-brand-border hover:border-brand-cyanBorder transition relative group">
+<div class="w-12 h-12 rounded-[8px] bg-black border border-brand-cyanBorder flex items-center justify-center text-brand-cyan font-heading font-black text-lg mb-6 shadow-cyan-subtle">
+              03
+            </div>
+<h3 class="font-heading font-bold text-xl text-brand-white mb-3 group-hover:text-brand-cyan transition-colors">
+              Lançamento &amp; Resultados
+            </h3>
+<p class="text-brand-muted text-xs sm:text-sm leading-relaxed mb-4">
+              Deploy com testes rigorosos de responsividade, auditoria técnica de SEO, integração de rastreadores e prontidão total para gerar leads.
+            </p>
+<ul class="text-xs text-brand-muted space-y-2 border-t border-brand-border/60 pt-4">
+<li class="flex items-center gap-2"><span class="text-brand-cyan">✓</span> Otimização de Velocidade Máxima</li>
+<li class="flex items-center gap-2"><span class="text-brand-cyan">✓</span> Entrega Completa de Acessos e Código</li>
+</ul>
+</div>
+</div>
+<div class="mt-14 text-center">
+<a class="inline-flex items-center justify-center px-8 py-3.5 rounded-[8px] bg-brand-cyan text-black font-heading font-bold text-sm tracking-wide hover:brightness-110 transition shadow-cyan-sm" href="#contato">
+            Agendar Reunião de Diagnóstico
+          </a>
+</div>
+</div>
+</section>
+<!-- END: 05. O Processo -->
+<!-- BEGIN: 06 & 08. Por Que Escolher / Engenharia de Precisão & Métricas Reais -->
+<section class="py-24 border-b border-brand-border bg-black" data-purpose="proof-of-performance" id="resultados">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Esquerda: Narrativa de Autoridade -->
+<div class="lg:col-span-6 space-y-6">
+<span class="inline-block px-3 py-1 rounded-[8px] bg-brand-cyanDim border border-brand-cyanBorder text-brand-cyan text-xs font-semibold uppercase tracking-wider">
+              Engenharia Sem Concessões
+            </span>
+<h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-brand-white leading-tight">
+              Presença Digital Que Funciona de Verdade
+            </h2>
+<p class="text-brand-muted leading-relaxed text-sm sm:text-base">
+              A maioria dos sites fracassa porque prioriza ornamentos vazios em vez de infraestrutura robusta e clareza comercial. Na METRION, unimos rigor estético a métricas tangíveis de desempenho para garantir que cada centavo investido retorne com autoridade e faturamento.
+            </p>
+<div class="space-y-4 pt-2">
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-brand-cyanDim border border-brand-cyanBorder flex items-center justify-center text-brand-cyan text-xs font-bold mt-0.5">✓</div>
+<div>
+<h4 class="font-heading font-semibold text-brand-white text-sm">Auditoria Lighthouse 99+</h4>
+<p class="text-xs text-brand-muted mt-0.5">Zero atrito na navegação com pontuação máxima no Google.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-brand-cyanDim border border-brand-cyanBorder flex items-center justify-center text-brand-cyan text-xs font-bold mt-0.5">✓</div>
+<div>
+<h4 class="font-heading font-semibold text-brand-white text-sm">SEO Técnico Integrado na Raiz</h4>
+<p class="text-xs text-brand-muted mt-0.5">Dados estruturados e hierarquia projetada para ranqueamento imediato.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-brand-cyanDim border border-brand-cyanBorder flex items-center justify-center text-brand-cyan text-xs font-bold mt-0.5">✓</div>
+<div>
+<h4 class="font-heading font-semibold text-brand-white text-sm">Design Responsivo Fluido</h4>
+<p class="text-xs text-brand-muted mt-0.5">Experiência visual impecável em smartphones, tablets e telas widescreen.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Direita: Grid Assimétrico Simulando Dashboard de Métricas -->
+<div class="lg:col-span-6 grid grid-cols-2 gap-4">
+<div class="space-y-4">
+<div class="p-6 rounded-[10px] bg-brand-card border border-brand-border hover:border-brand-cyanBorder transition shadow-cyan-subtle">
+<div class="text-xs text-brand-muted uppercase tracking-wider mb-2 font-mono">Índice de Performance</div>
+<div class="text-4xl font-heading font-black text-brand-cyan">99/100</div>
+<div class="text-xs text-brand-white/80 mt-2">Medição real Google Core Web Vitals</div>
+</div>
+<div class="p-6 rounded-[10px] bg-brand-card border border-brand-border hover:border-brand-cyanBorder transition">
+<div class="text-xs text-brand-muted uppercase tracking-wider mb-2 font-mono">Tempo de Retenção</div>
+<div class="text-3xl font-heading font-bold text-brand-white">+210%</div>
+<div class="text-xs text-brand-muted mt-2">Usuários permanecem mais tempo interagindo</div>
+</div>
+</div>
+<div class="space-y-4 pt-6">
+<div class="p-6 rounded-[10px] bg-brand-card border border-brand-border hover:border-brand-cyanBorder transition">
+<div class="text-xs text-brand-muted uppercase tracking-wider mb-2 font-mono">Taxa de Conversão</div>
+<div class="text-3xl font-heading font-bold text-brand-white">4.8x</div>
+<div class="text-xs text-brand-muted mt-2">Média comparada a templates comuns</div>
+</div>
+<div class="p-6 rounded-[10px] bg-brand-card border border-brand-cyanBorder bg-brand-cardHover shadow-cyan-sm">
+<div class="text-xs text-brand-cyan uppercase tracking-wider mb-2 font-mono">Garantia METRION</div>
+<div class="text-2xl font-heading font-bold text-brand-white">Código 100% Seu</div>
+<div class="text-xs text-brand-muted mt-2">Sem taxas ocultas ou bloqueio de plataforma</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: 06 & 08. Por Que Escolher -->
+<!-- BEGIN: Ticker Marquee de Especialidades -->
+<section class="py-4 bg-brand-card border-y border-brand-border overflow-hidden" data-purpose="marquee-ticker">
+<div class="animate-marquee whitespace-nowrap text-xs font-heading font-semibold tracking-widest text-brand-muted uppercase flex items-center">
+<span class="mx-6 text-brand-cyan">&lt;/ENGENHARIA WEB DE ELITE&gt;</span>
+<span class="mx-4 text-brand-border">—</span>
+<span class="mx-6 hover:text-white transition">ARQUITETURA DE ALTA CONVERSÃO</span>
+<span class="mx-4 text-brand-border">—</span>
+<span class="mx-6 hover:text-white transition">SEO TÉCNICO AVANÇADO</span>
+<span class="mx-4 text-brand-border">—</span>
+<span class="mx-6 text-brand-cyan">UI/UX SÊNIOR SOB MEDIDA</span>
+<span class="mx-4 text-brand-border">—</span>
+<span class="mx-6 hover:text-white transition">CORE WEB VITALS 99+</span>
+<span class="mx-4 text-brand-border">—</span>
+<span class="mx-6 text-brand-cyan">&lt;/ENGENHARIA WEB DE ELITE&gt;</span>
+<span class="mx-4 text-brand-border">—</span>
+<span class="mx-6 hover:text-white transition">ARQUITETURA DE ALTA CONVERSÃO</span>
+<span class="mx-4 text-brand-border">—</span>
+<span class="mx-6 hover:text-white transition">SEO TÉCNICO AVANÇADO</span>
+<span class="mx-4 text-brand-border">—</span>
+<span class="mx-6 text-brand-cyan">UI/UX SÊNIOR SOB MEDIDA</span>
+</div>
+</section>
+<!-- END: Ticker Marquee -->
+<!-- BEGIN: 07 & 09. Cases & Resultados Concretos -->
+<section class="py-24 border-b border-brand-border bg-brand-surface" data-purpose="featured-cases" id="cases">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="inline-block px-3 py-1 rounded-[8px] bg-brand-cyanDim border border-brand-cyanBorder text-brand-cyan text-xs font-medium uppercase tracking-wider mb-3">
+            Cases Concretos
+          </span>
+<h2 class="text-3xl sm:text-4xl font-heading font-bold text-brand-white">
+            Resultados Comprovados em Números
+          </h2>
+<p class="text-brand-muted text-sm mt-3">Projetos reais entregues com foco inegociável em retorno de investimento.</p>
+</div>
+<div class="space-y-8">
+<!-- Case 1: Zonaris -->
+<article class="rounded-[10px] bg-brand-card border border-brand-border p-6 sm:p-8 hover:border-brand-cyanBorder transition">
+<div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-xs px-2.5 py-1 rounded-[6px] bg-black border border-brand-border text-brand-cyan font-mono">FINTECH</span>
+<span class="text-xs px-2.5 py-1 rounded-[6px] bg-black border border-brand-border text-brand-muted">PLATAFORMA WEB</span>
+</div>
+<h3 class="text-2xl sm:text-3xl font-heading font-bold text-brand-white">Zonaris Financial</h3>
+</div>
+<span class="text-xs font-mono text-brand-cyan border border-brand-cyanBorder px-3 py-1 rounded-[6px] bg-brand-cyanDim">
+                +142K EM FATURAMENTO (1º TRIMESTRE)
+              </span>
+</div>
+<p class="text-sm text-brand-muted mb-6 leading-relaxed">
+              Reformulação completa de ponta a ponta: redesign da jornada de onboarding e modernização do portal de pagamentos resultando em queda abrupta no abandono de checkout.
+            </p>
+<div class="rounded-[8px] bg-black border border-brand-border p-6">
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="p-4 rounded-[6px] bg-brand-card border border-brand-border">
+<div class="text-xs text-brand-muted">Aumento de Faturamento</div>
+<div class="text-2xl font-bold font-heading text-brand-cyan mt-1">+R$ 142.800</div>
+<div class="text-[11px] text-brand-muted mt-1">Crescimento no 1º trimestre</div>
+</div>
+<div class="p-4 rounded-[6px] bg-brand-card border border-brand-border">
+<div class="text-xs text-brand-muted">Eficiência no Checkout</div>
+<div class="text-2xl font-bold font-heading text-brand-white mt-1">94.2%</div>
+<div class="text-[11px] text-brand-cyan mt-1">Zero atritos ou lentidão</div>
+</div>
+<div class="p-4 rounded-[6px] bg-brand-card border border-brand-border">
+<div class="text-xs text-brand-muted">Tempo Médio na Página</div>
+<div class="text-2xl font-bold font-heading text-brand-white mt-1">6m 12s</div>
+<div class="text-[11px] text-brand-muted mt-1">Engajamento 3x maior</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Case 2: Trackpac -->
+<article class="rounded-[10px] bg-brand-card border border-brand-border p-6 sm:p-8 hover:border-brand-cyanBorder transition">
+<div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-xs px-2.5 py-1 rounded-[6px] bg-black border border-brand-border text-brand-cyan font-mono">SAAS IOT</span>
+<span class="text-xs px-2.5 py-1 rounded-[6px] bg-black border border-brand-border text-brand-muted">LANDING &amp; DASHBOARD</span>
+</div>
+<h3 class="text-2xl sm:text-3xl font-heading font-bold text-brand-white">Trackpac Enterprise</h3>
+</div>
+<span class="text-xs font-mono text-brand-cyan border border-brand-cyanBorder px-3 py-1 rounded-[6px] bg-brand-cyanDim">
+                4.2X TAXA DE CONVERSÃO
+              </span>
+</div>
+<p class="text-sm text-brand-muted mb-6 leading-relaxed">
+              Posicionamento de autoridade global para solução de telemetria corporativa, substituindo um layout amador por uma experiência ultraveloz que fechou contratos de grande porte.
+            </p>
+<div class="rounded-[8px] bg-black border border-brand-border p-6">
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+<div class="p-3 rounded-[6px] bg-brand-card border border-brand-border">
+<div class="text-xs text-brand-muted">Conversão</div>
+<div class="text-xl font-heading font-bold text-brand-cyan">4.2x</div>
+</div>
+<div class="p-3 rounded-[6px] bg-brand-card border border-brand-border">
+<div class="text-xs text-brand-muted">Velocidade</div>
+<div class="text-xl font-heading font-bold text-brand-white">0.4s</div>
+</div>
+<div class="p-3 rounded-[6px] bg-brand-card border border-brand-border">
+<div class="text-xs text-brand-muted">Disponibilidade</div>
+<div class="text-xl font-heading font-bold text-brand-cyan">99.99%</div>
+</div>
+<div class="p-3 rounded-[6px] bg-brand-card border border-brand-border">
+<div class="text-xs text-brand-muted">Avaliação NPS</div>
+<div class="text-xl font-heading font-bold text-brand-white">96</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Case 3: Medalyc -->
+<article class="rounded-[10px] bg-brand-card border border-brand-border p-6 sm:p-8 hover:border-brand-cyanBorder transition">
+<div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-xs px-2.5 py-1 rounded-[6px] bg-black border border-brand-border text-brand-cyan font-mono">HEALTHCARE</span>
+<span class="text-xs px-2.5 py-1 rounded-[6px] bg-black border border-brand-border text-brand-muted">PORTAL MÉDICO</span>
+</div>
+<h3 class="text-2xl sm:text-3xl font-heading font-bold text-brand-white">Medalyc Clínicas</h3>
+</div>
+<span class="text-xs font-mono text-brand-cyan border border-brand-cyanBorder px-3 py-1 rounded-[6px] bg-brand-cyanDim">
+                +88% LEADS QUALIFICADOS
+              </span>
+</div>
+<p class="text-sm text-brand-muted mb-6 leading-relaxed">
+              Estruturação completa de funil com arquitetura de informação clara para agendamento de consultas corporativas e validação de conformidade de dados.
+            </p>
+<div class="rounded-[8px] bg-black border border-brand-border p-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-4 rounded-[6px] bg-brand-card border border-brand-border">
+<span class="text-xs text-brand-muted">Captação de Pacientes Qualificados</span>
+<div class="text-2xl font-heading font-bold text-brand-cyan mt-1">+88% de Leads</div>
+</div>
+<div class="p-4 rounded-[6px] bg-brand-card border border-brand-border">
+<span class="text-xs text-brand-muted">Redução de Carga Operacional</span>
+<div class="text-2xl font-heading font-bold text-brand-white mt-1">-45% de Tempo</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- END: 07 & 09. Cases & Resultados Concretos -->
+<!-- BEGIN: 07. Depoimentos com Credibilidade -->
+<section class="py-24 border-b border-brand-border bg-black" data-purpose="client-testimonials" id="depoimentos">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="inline-block px-3 py-1 rounded-[8px] bg-brand-cyanDim border border-brand-cyanBorder text-brand-cyan text-xs font-medium uppercase tracking-wider mb-3">
+            Credibilidade Comprovada
+          </span>
+<h2 class="text-3xl sm:text-4xl font-heading font-bold text-brand-white">
+            O Que Nossos Clientes Dizem
+          </h2>
+<p class="text-brand-muted text-sm mt-3">Líderes de negócios que confiaram a transformação de sua presença à METRION.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Depoimento 1 -->
+<div class="p-6 rounded-[10px] bg-brand-card border border-brand-border hover:border-brand-cyanBorder transition flex flex-col justify-between">
+<div>
+<div aria-label="5 de 5 estrelas" class="flex items-center text-brand-cyan text-sm gap-1 mb-4">
+<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+</div>
+<p class="text-xs sm:text-sm text-brand-white leading-relaxed mb-6">
+                "A diferença no valor percebido pelos clientes foi instantânea. Hoje fechamos propostas corporativas de ticket muito mais alto porque o nosso site transmite autoridade imediata."
+              </p>
+</div>
+<div class="pt-4 border-t border-brand-border flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-surface border border-brand-cyanBorder flex items-center justify-center font-heading font-bold text-xs text-brand-cyan">
+                KK
+              </div>
+<div>
+<div class="font-heading font-semibold text-xs text-brand-white">Kenna Kutcher</div>
+<div class="text-[11px] text-brand-muted">CEO — Assetfolio Partners</div>
+</div>
+</div>
+</div>
+<!-- Depoimento 2 -->
+<div class="p-6 rounded-[10px] bg-brand-card border border-brand-border hover:border-brand-cyanBorder transition flex flex-col justify-between">
+<div>
+<div aria-label="5 de 5 estrelas" class="flex items-center text-brand-cyan text-sm gap-1 mb-4">
+<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+</div>
+<p class="text-xs sm:text-sm text-brand-white leading-relaxed mb-6">
+                "A precisão da engenharia e a velocidade de carregamento nos permitiram reduzir drasticamente nosso custo por clique e multiplicar a conversão dos visitantes em reuniões."
+              </p>
+</div>
+<div class="pt-4 border-t border-brand-border flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-surface border border-brand-cyanBorder flex items-center justify-center font-heading font-bold text-xs text-brand-cyan">
+                DL
+              </div>
+<div>
+<div class="font-heading font-semibold text-xs text-brand-white">David Lawson</div>
+<div class="text-[11px] text-brand-muted">CTO — Trackpac Global</div>
+</div>
+</div>
+</div>
+<!-- Depoimento 3 -->
+<div class="p-6 rounded-[10px] bg-brand-card border border-brand-border hover:border-brand-cyanBorder transition flex flex-col justify-between">
+<div>
+<div aria-label="5 de 5 estrelas" class="flex items-center text-brand-cyan text-sm gap-1 mb-4">
+<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+</div>
+<p class="text-xs sm:text-sm text-brand-white leading-relaxed mb-6">
+                "Sem enrolação, comunicação direta e entrega rigorosamente no prazo prometido. A METRION é um padrão de agência raro de se encontrar hoje em dia."
+              </p>
+</div>
+<div class="pt-4 border-t border-brand-border flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-surface border border-brand-cyanBorder flex items-center justify-center font-heading font-bold text-xs text-brand-cyan">
+                MR
+              </div>
+<div>
+<div class="font-heading font-semibold text-xs text-brand-white">Marcus Reed</div>
+<div class="text-[11px] text-brand-muted">Fundador — Zonaris Capital</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: 07. Depoimentos -->
+<!-- BEGIN: FAQ Estratégico -->
+<section class="py-24 border-b border-brand-border bg-brand-surface" data-purpose="frequently-asked-questions" id="faq">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="inline-block px-3 py-1 rounded-[8px] bg-brand-cyanDim border border-brand-cyanBorder text-brand-cyan text-xs font-medium uppercase tracking-wider mb-3">
+            Dúvidas Frequentes
+          </span>
+<h2 class="text-3xl sm:text-4xl font-heading font-bold text-brand-white">
+            Perguntas &amp; Respostas Diretas
+          </h2>
+<p class="text-brand-muted text-sm mt-3">Transparência total antes de iniciarmos qualquer etapa do seu projeto.</p>
+</div>
+<div class="space-y-4">
+<!-- FAQ Item 1 -->
+<div class="p-6 rounded-[10px] bg-brand-card border border-brand-border hover:border-brand-cyanBorder transition">
+<h4 class="font-heading font-semibold text-sm sm:text-base text-brand-white mb-2 flex items-center justify-between">
+<span>Qual é o prazo médio de entrega de um website de alto padrão?</span>
+<span class="text-brand-cyan text-lg">01</span>
+</h4>
+<p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
+              A média para um projeto sob medida completo (estratégia, design autoral e programação) varia entre 2 a 4 semanas, respeitando cronogramas rígidos com aprovações em cada etapa.
+            </p>
+</div>
+<!-- FAQ Item 2 -->
+<div class="p-6 rounded-[10px] bg-brand-card border border-brand-border hover:border-brand-cyanBorder transition">
+<h4 class="font-heading font-semibold text-sm sm:text-base text-brand-white mb-2 flex items-center justify-between">
+<span>Eu serei o único proprietário do código e do domínio?</span>
+<span class="text-brand-cyan text-lg">02</span>
+</h4>
+<p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
+              Sim, 100%. Você detém a propriedade total do código-fonte, domínio, artes e bancos de dados. Sem dependência de plataformas proprietárias ou mensalidades surpresa de licenciamento.
+            </p>
+</div>
+<!-- FAQ Item 3 -->
+<div class="p-6 rounded-[10px] bg-brand-card border border-brand-border hover:border-brand-cyanBorder transition">
+<h4 class="font-heading font-semibold text-sm sm:text-base text-brand-white mb-2 flex items-center justify-between">
+<span>Como o SEO técnico é trabalhado no desenvolvimento?</span>
+<span class="text-brand-cyan text-lg">03</span>
+</h4>
+<p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
+              O código é desenvolvido na raiz com semântica perfeita para os rastreadores do Google, incluindo metadados Open Graph, Schema.org estruturado, mapa do site XML e pontuação máxima no Google Core Web Vitals.
+            </p>
+</div>
+<!-- FAQ Item 4 -->
+<div class="p-6 rounded-[10px] bg-brand-card border border-brand-border hover:border-brand-cyanBorder transition">
+<h4 class="font-heading font-semibold text-sm sm:text-base text-brand-white mb-2 flex items-center justify-between">
+<span>Vocês oferecem suporte e manutenção pós-lançamento?</span>
+<span class="text-brand-cyan text-lg">04</span>
+</h4>
+<p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
+              Sim. Todos os nossos projetos acompanham garantia de estabilidade e disponibilizamos planos contínuos de acompanhamento, otimização de conversão e atualização técnica.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: FAQ Estratégico -->
+<!-- BEGIN: 10. CTA Final Poderoso -->
+<section class="py-24 border-b border-brand-border bg-black relative overflow-hidden" data-purpose="call-to-action" id="contato">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="rounded-[12px] bg-brand-card border border-brand-cyanBorder p-8 sm:p-14 shadow-cyan-glow relative overflow-hidden">
+<!-- Brilho no Canto -->
+<div class="absolute -right-24 -bottom-24 w-80 h-80 bg-brand-cyan/20 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+<!-- Esquerda: Informações e Chamada -->
+<div class="md:col-span-8 space-y-5">
+<span class="inline-block px-3 py-1 rounded-[6px] bg-brand-cyanDim border border-brand-cyanBorder text-brand-cyan text-xs font-mono uppercase tracking-wider">
+                Pronto para o Próximo Nível?
+              </span>
+<h2 class="text-3xl sm:text-5xl font-heading font-black text-brand-white leading-tight">
+                Precisa de um site que realmente gere resultados?
+              </h2>
+<p class="text-brand-muted text-sm sm:text-base leading-relaxed max-w-xl">
+                Pare de perder clientes para concorrentes com presença mais profissional. Agende uma conversa direta com nossa equipe e receba um diagnóstico exclusivo para seu projeto.
+              </p>
+<div class="flex flex-wrap items-center gap-4 pt-3">
+<a class="inline-flex items-center justify-center px-7 py-3.5 rounded-[8px] bg-brand-cyan text-black font-heading font-bold text-sm tracking-wide hover:brightness-110 transition shadow-cyan-sm hover:shadow-cyan-glow" href="https://wa.me/18478045528" rel="noopener" target="_blank">
+                  Iniciar Conversa no WhatsApp
+                </a>
+<a class="inline-flex items-center gap-2 px-6 py-3.5 rounded-[8px] bg-black border border-brand-border hover:border-brand-cyan/40 text-brand-white text-sm font-medium transition" href="mailto:info@metrion.com">
+                  Enviar E-mail Direto
+                </a>
+</div>
+</div>
+<!-- Direita: Selo de Resposta Imediata -->
+<div class="md:col-span-4 flex justify-center md:justify-end">
+<div class="p-6 rounded-[10px] bg-black border border-brand-cyan/30 flex flex-col items-center text-center shadow-cyan-subtle">
+<div class="w-12 h-12 rounded-full bg-brand-cyanDim border border-brand-cyan flex items-center justify-center text-brand-cyan mb-3">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="font-heading font-bold text-brand-white text-sm">Resposta Rápida</div>
+<p class="text-xs text-brand-muted mt-1">Retorno garantido em menos de 2 horas úteis.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: 10. CTA Final Poderoso -->
+</main>
+<!-- BEGIN: 11. Footer Minimalista & Completo -->
+<footer class="bg-black pt-16 pb-12" data-purpose="site-footer">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Contact Info Bar -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pb-12 border-b border-brand-border text-center md:text-left">
+<div class="flex items-center justify-center md:justify-start gap-3">
+<svg class="w-5 h-5 text-brand-cyan" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+<span class="text-xs sm:text-sm text-brand-white font-mono">info@metrion.com</span>
+</div>
+<div class="flex items-center justify-center md:justify-start gap-3">
+<svg class="w-5 h-5 text-brand-cyan" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+<span class="text-xs sm:text-sm text-brand-white font-mono">+1 (847) 804 5528</span>
+</div>
+<div class="flex items-center justify-center md:justify-start gap-3">
+<svg class="w-5 h-5 text-brand-cyan" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+<span class="text-xs sm:text-sm text-brand-muted">São Paulo / Global Remote</span>
+</div>
+</div>
+<!-- Links Rápidos de Navegação -->
+<div class="py-8 flex flex-wrap justify-center items-center gap-6 md:gap-8 border-b border-brand-border text-xs text-brand-muted uppercase font-heading tracking-widest">
+<a class="hover:text-brand-cyan transition" href="#proposta">Proposta</a>
+<span class="text-brand-border">•</span>
+<a class="hover:text-brand-cyan transition" href="#beneficios">Benefícios</a>
+<span class="text-brand-border">•</span>
+<a class="hover:text-brand-cyan transition" href="#processo">Processo</a>
+<span class="text-brand-border">•</span>
+<a class="hover:text-brand-cyan transition" href="#cases">Cases</a>
+<span class="text-brand-border">•</span>
+<a class="hover:text-brand-cyan transition" href="#faq">FAQ</a>
+</div>
+<!-- Marca METRION Monumental -->
+<div class="py-12 text-center">
+<span class="font-heading font-black text-5xl sm:text-7xl lg:text-9xl tracking-widest text-brand-white select-none opacity-90">
+          METRION<span class="text-brand-cyan drop-shadow-[0_0_20px_rgba(0,242,254,0.6)]">.</span>
+</span>
+</div>
+<!-- Copyright e Assinatura Técnica -->
+<div class="text-center text-xs text-brand-muted">
+        © 2026 METRION. Todos os direitos reservados. Presença digital de alto padrão construída com rigor técnico e foco em resultados.
+      </div>
+</div>
+</footer>
+<!-- END: 11. Footer Minimalista & Completo -->
+
+  
+  <!-- Lenis & GSAP Initialization -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize GSAP ScrollTrigger if available
+      if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Fade up reveal for sections
+        gsap.utils.toArray('section').forEach((section) => {
+          gsap.from(section.querySelectorAll('.glass-card, h2, p'), {
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 85%',
+              toggleActions: 'play none none none'
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power2.out'
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
